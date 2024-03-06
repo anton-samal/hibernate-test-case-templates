@@ -17,6 +17,7 @@ package org.hibernate.bugs;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.bugs.entity.*;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.testing.junit4.BaseCoreFunctionalTestCase;
@@ -37,8 +38,27 @@ public class ORMUnitTestCase extends BaseCoreFunctionalTestCase {
 	@Override
 	protected Class[] getAnnotatedClasses() {
 		return new Class[] {
-//				Foo.class,
-//				Bar.class
+				BA.class,
+				BaseAddress.class,
+				BiA.class,
+				BiAHolder.class,
+				BMainDriver.class,
+				BMainPerson.class,
+				BSDriver.class,
+				BSPerson.class,
+				Company.class,
+				CountryEntity.class,
+				CPerson.class,
+				CPersonDriver.class,
+				DDeliveryAddress.class,
+				DeliveryAddress.class,
+				Driver.class,
+				DriverNicknameEntity.class,
+				MainDriver.class,
+				PDeliveryAddress.class,
+				PDriver.class,
+				Person.class,
+				PPerson.class
 		};
 	}
 
@@ -72,7 +92,7 @@ public class ORMUnitTestCase extends BaseCoreFunctionalTestCase {
 		// BaseCoreFunctionalTestCase automatically creates the SessionFactory and provides the Session.
 		Session s = openSession();
 		Transaction tx = s.beginTransaction();
-		// Do stuff...
+		final Driver driver = session.get(Driver.class, 1L);
 		tx.commit();
 		s.close();
 	}
